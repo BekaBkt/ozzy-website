@@ -3,20 +3,12 @@ import { motion, AnimatePresence } from 'motion/react';
 import {
   Apple,
   Play,
-  Sparkles,
-  Check,
-  LineChart,
   X,
   QrCode,
   Timer,
   Flame,
   ChevronRight,
-  ShieldCheck,
-  Heart,
-  Camera,
-  Coins,
-  Compass,
-  Award
+  ShieldCheck
 } from 'lucide-react';
 import OzzyHeroAnimation from './components/OzzyHeroAnimation';
 import imgStage1 from './components/img/SS4.png';
