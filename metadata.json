@@ -1,0 +1,6 @@
+{
+  "name": "Ozzy",
+  "description": "A modern, playful, and conversion-focused landing page for Ozzy, a gamified focus and habit-tracking application.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
