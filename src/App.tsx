@@ -460,9 +460,8 @@ export default function App() {
               </div>
             </div>
 
-            {/* Feature Row 3 (Text Left, Image Right) */}
+            {/* HIDDEN - Feature Row 3 (Text Left, Image Right) - restore when needed
             <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-              {/* Left text column */}
               <div className="md:col-span-6 space-y-4 flex flex-col items-start text-left">
                 <span className="text-xs font-mono font-bold text-[#47A659] tracking-wider uppercase bg-[#47A659]/10 px-2.5 py-1 rounded-full">
                   STAGE 03
@@ -474,22 +473,18 @@ export default function App() {
                   Keep the flame alive. Track your daily consistency, build unstoppable momentum, and visualize your progress with satisfying weekly habit tracking.
                 </p>
               </div>
-              {/* Right image column: Light pastel orange rounded backdrop + Floating Screenshot */}
               <div className="md:col-span-6 flex justify-center">
                 <div className="relative w-full max-w-md flex justify-center items-center py-12 group overflow-visible">
-
-                  {/* Wide horizontal pastel orange backdrop */}
                   <div className="absolute inset-x-0 top-8 bottom-8 rounded-[3rem] bg-[#FFF3E0]" />
-
                   <img
                     src={imgStage3}
                     alt="Build Unbreakable Streaks"
                     className="relative z-10 w-full max-w-[250px] sm:max-w-[270px] h-auto object-contain shadow-2xl rounded-[2.5rem] border-[6px] border-white transition-all group-hover:translate-y-[-12px] group-hover:rotate-1"
                   />
-
                 </div>
               </div>
             </div>
+            */}
 
             {/* Feature Row 4 (Image Left, Text Right) */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
@@ -524,26 +519,7 @@ export default function App() {
 
           </div>
 
-          {/* Quick email / action conversion block exactly as bitepal.app style of quick subscription block */}
-          <div className="bg-[#47A659]/5 border border-dashed border-[#47A659]/25 rounded-[2rem] p-8 sm:p-12 mt-28 max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
-            <div className="space-y-2 max-w-lg">
-              <span className="text-[10px] font-mono font-black text-[#47A659] uppercase tracking-widest block font-bold">GET THE COMPANION APP</span>
-              <h4 className="font-display font-black text-2xl sm:text-3xl text-[#11252C] leading-none uppercase">
-                READY TO JOIN THE GUILD OF ATTAINMENT?
-              </h4>
-              <p className="text-[#11252C]/70 text-xs sm:text-sm font-montserrat leading-relaxed">
-                Connect and sync Ozzy to your phone. Grow your digital beast, double your focus hours, and unlock deep task satisfaction.
-              </p>
-            </div>
 
-            <button
-              onClick={() => triggerDownloadModal('general')}
-              className="px-6 py-4 bg-[#11252C] hover:bg-[#11252C]/95 text-white rounded-full text-xs font-mono font-black uppercase tracking-widest shrink-0 transition-transform active:scale-95 flex items-center gap-2 cursor-pointer shadow-md"
-            >
-              <span>Download Ozzy Now</span>
-              <ChevronRight className="w-4 h-4 text-[#47A659]" />
-            </button>
-          </div>
 
         </div>
       </section>
