@@ -13,9 +13,10 @@ import {
 import OzzyHeroAnimation from './components/OzzyHeroAnimation';
 import imgStage1 from './components/img/SS4.png';
 import imgStage2 from './components/img/SS3.png';
-import imgStage3 from './components/img/SS7.png';
+import imgStage3 from './components/img/image.png';
 import imgStage4 from './components/img/SS5.png';
 import ozzyIcon from './components/img/ozzy-icon.png';
+import SupportModal from './components/SupportModal';
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,6 +24,7 @@ export default function App() {
   const [emailInput, setEmailInput] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [simActive, setSimActive] = useState(false);
+  const [isSupportOpen, setIsSupportOpen] = useState(false);
 
   // Interactive Simulator States
   const [petLevel, setPetLevel] = useState(1);
@@ -136,38 +138,47 @@ export default function App() {
           {/* Logo Brand left */}
           <div className="flex items-center gap-3">
             <img src={ozzyIcon} alt="Ozzy App Icon" className="w-10 h-10 rounded-xl shadow-sm object-cover" />
-            <span className="font-display font-black text-xl tracking-tight text-[#11252C] uppercase">
+            <span className="font-display font-black text-xl tracking-wider text-[#11252C] uppercase">
               Ozzy
             </span>
           </div>
 
           {/* CTA Right */}
-          <div className="flex items-center gap-2">
-            <button
+          <div className="flex items-center gap-3">
+            <div
               id="btn-nav-app-store"
-              onClick={() => triggerDownloadModal('appstore')}
-              className="flex items-center justify-center gap-2 bg-[#11252C] hover:bg-[#11252C]/90 active:scale-95 text-white p-2.5 min-[400px]:px-4 min-[400px]:py-2 rounded-xl transition-all cursor-pointer shadow-sm"
+              className="opacity-40 select-none pointer-events-none flex shrink-0"
               aria-label="Download on the App Store"
             >
-              <Apple className="w-4 h-4 text-[#47A659]" />
-              <div className="text-left leading-none hidden min-[400px]:block">
-                <span className="block text-[6px] text-gray-400 font-sans tracking-tight leading-none font-medium">Download on the</span>
-                <span className="text-[10px] font-sans font-bold leading-none tracking-tight">App Store</span>
-              </div>
-            </button>
+              <img
+                src="/app-store-badge.svg"
+                alt="Download on the App Store"
+                className="h-10 w-auto"
+              />
+            </div>
 
-            <button
-              id="btn-nav-google-play"
-              onClick={() => triggerDownloadModal('googleplay')}
-              className="flex items-center justify-center gap-2 bg-[#11252C] hover:bg-[#11252C]/90 active:scale-95 text-white p-2.5 min-[400px]:px-4 min-[400px]:py-2 rounded-xl transition-all cursor-pointer shadow-sm"
-              aria-label="Get it on Google Play"
-            >
-              <Play className="w-3.5 h-3.5 fill-[#47A659] text-[#47A659]" />
-              <div className="text-left leading-none hidden min-[400px]:block">
-                <span className="block text-[6px] text-gray-400 font-sans tracking-tight leading-none font-medium">Get it on</span>
-                <span className="text-[10px] font-sans font-bold leading-none tracking-tight">Google Play</span>
+            <div className="relative flex shrink-0">
+              <div
+                id="btn-nav-google-play"
+                className="opacity-40 select-none pointer-events-none"
+                aria-label="Get it on Google Play"
+              >
+                <img 
+                  src="/google-play-badge.svg" 
+                  alt="Get it on Google Play" 
+                  className="h-10 w-auto" 
+                />
               </div>
-            </button>
+              <div className="absolute top-[8px] left-[142px] flex items-center pointer-events-none select-none z-50">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#47A659" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="mr-1 transform translate-y-0.5">
+                    <path d="M20 11.5c-3 0.3-11-0.2-16 0.5" />
+                    <path d="M9 6.5l-5 5 5 4.5" />
+                  </svg>
+                <span className="font-handwritten text-base font-bold text-[#47A659] -rotate-6 select-none translate-y-0.5 whitespace-nowrap">
+                  coming soon!
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </nav>
@@ -356,41 +367,14 @@ export default function App() {
           </div>
 
           {/* Subheadline centered */}
-          <p className="text-base sm:text-lg text-[#11252C]/80 font-normal leading-relaxed max-w-xl mx-auto">
+          <p className="text-base sm:text-lg text-[#11252C]/80 font-normal leading-relaxed max-w-xl mx-auto font-montserrat">
             Turn your daily goals into an RPG. Grow your digital companion, unlock rare traits, and reclaim your attention span with Ozzy.
           </p>
-
-          {/* CTA App Store & Play Store buttons side-by-side (Centered) */}
-          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center mt-2">
-            <button
-              id="btn-app-store"
-              onClick={() => triggerDownloadModal('appstore')}
-              className="flex items-center justify-center gap-3 bg-[#11252C] hover:bg-[#11252C]/90 active:scale-95 text-white px-7 py-3.5 rounded-2xl transition-all font-mono text-xs uppercase tracking-wider font-black cursor-pointer shadow-md"
-            >
-              <Apple className="w-5 h-5 text-[#47A659]" />
-              <div className="text-left leading-none">
-                <span className="block text-[8px] opacity-70 tracking-tight normal-case font-sans">Download on the</span>
-                <span className="text-sm font-bold">App Store</span>
-              </div>
-            </button>
-
-            <button
-              id="btn-google-play"
-              onClick={() => triggerDownloadModal('googleplay')}
-              className="flex items-center justify-center gap-3 bg-[#11252C] hover:bg-[#11252C]/90 active:scale-95 text-white px-7 py-3.5 rounded-2xl transition-all font-mono text-xs uppercase tracking-wider font-black cursor-pointer shadow-md"
-            >
-              <Play className="w-4 h-4 fill-[#47A659] text-[#47A659]" />
-              <div className="text-left leading-none">
-                <span className="block text-[8px] opacity-70 tracking-tight normal-case font-sans">Get it on</span>
-                <span className="text-sm font-bold">Google Play</span>
-              </div>
-            </button>
-          </div>
 
           {/* Trust badge */}
           <div className="flex items-center gap-2 text-[10px] text-[#11252C]/50 font-mono tracking-wide uppercase">
             <ShieldCheck className="w-4 h-4 text-[#47A659]" />
-            <span>OFFLINE FIRST • SECURITY VERIFIED • ZERO TRACKERS</span>
+            <span>SECURITY VERIFIED • ZERO TRACKERS</span>
           </div>
 
         </div>
@@ -398,16 +382,16 @@ export default function App() {
 
       {/* 3. Alternating Feature Showcase Row Matrix */}
       <section id="features-section" className="w-full bg-white py-16 md:py-24 space-y-24 md:space-y-36">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <div className="text-center max-w-2xl mx-auto mb-16 md:mb-24 space-y-3">
-            <span className="text-xs font-mono font-bold text-[#47A659] tracking-widest uppercase">
+            <span className="text-xs font-display font-bold text-[#47A659] tracking-widest uppercase">
               How Ozzy Works
             </span>
             <h3 className="font-display font-black text-3xl sm:text-4xl text-[#11252C] uppercase tracking-tight">
               An RPG game powered by your focus sessions
             </h3>
-            <p className="text-sm sm:text-base text-[#11252C]/75 leading-relaxed">
+            <p className="text-sm sm:text-base text-[#11252C]/75 leading-relaxed font-montserrat">
               Our unique game design rewards genuine real-world habits. Evolve your virtual buddy, unlock powerful accessories, and defeat distraction.
             </p>
           </div>
@@ -424,7 +408,7 @@ export default function App() {
                 <h4 className="font-display font-black text-3xl md:text-4xl text-[#11252C] tracking-tight leading-tight uppercase">
                   Character-Driven Focus
                 </h4>
-                <p className="text-[#11252C]/80 text-base leading-relaxed">
+                <p className="text-[#11252C]/80 text-lg leading-relaxed font-montserrat">
                   Set a focus timer and stay on track alongside Ozzy. Your digital companion studies with you, turning deep work into an engaging, shared experience.
                 </p>
               </div>
@@ -470,7 +454,7 @@ export default function App() {
                 <h4 className="font-display font-black text-3xl md:text-4xl text-[#11252C] tracking-tight leading-tight uppercase">
                   AI-Powered Verification
                 </h4>
-                <p className="text-[#11252C]/80 text-base leading-relaxed">
+                <p className="text-[#11252C]/80 text-lg leading-relaxed font-montserrat">
                   Complete real-world tasks and prove it. Snap a photo, and our smart AI instantly analyzes the image to verify your action and grant rewards. No cheating allowed!
                 </p>
               </div>
@@ -486,7 +470,7 @@ export default function App() {
                 <h4 className="font-display font-black text-3xl md:text-4xl text-[#11252C] tracking-tight leading-tight uppercase">
                   Build Unbreakable Streaks
                 </h4>
-                <p className="text-[#11252C]/80 text-base leading-relaxed">
+                <p className="text-[#11252C]/80 text-lg leading-relaxed font-montserrat">
                   Keep the flame alive. Track your daily consistency, build unstoppable momentum, and visualize your progress with satisfying weekly habit tracking.
                 </p>
               </div>
@@ -532,8 +516,8 @@ export default function App() {
                 <h4 className="font-display font-black text-3xl md:text-4xl text-[#11252C] tracking-tight leading-tight uppercase">
                   Customize & Evolve
                 </h4>
-                <p className="text-[#11252C]/80 text-base leading-relaxed">
-                  Spend your hard-earned focus coins in the Gear Shop. Unlock rare hats, accessories, and outfits to personalize your pet and show off your productivity.
+                <p className="text-[#11252C]/80 text-lg leading-relaxed font-montserrat">
+                  Spend your earned focus coins in the Gear Shop. Unlock rare hats, accessories, and outfits to personalize your pet and show off your productivity.
                 </p>
               </div>
             </div>
@@ -547,7 +531,7 @@ export default function App() {
               <h4 className="font-display font-black text-2xl sm:text-3xl text-[#11252C] leading-none uppercase">
                 READY TO JOIN THE GUILD OF ATTAINMENT?
               </h4>
-              <p className="text-[#11252C]/70 text-xs sm:text-sm font-sans leading-relaxed">
+              <p className="text-[#11252C]/70 text-xs sm:text-sm font-montserrat leading-relaxed">
                 Connect and sync Ozzy to your phone. Grow your digital beast, double your focus hours, and unlock deep task satisfaction.
               </p>
             </div>
@@ -578,14 +562,31 @@ export default function App() {
 
           {/* Right footer legal anchors */}
           <div className="flex flex-wrap justify-center gap-6 md:gap-10">
-            <a href="#privacy" className="text-xs font-mono font-bold tracking-widest uppercase text-[#11252C]/80 hover:text-[#47A659] transition-colors">
-              Privacy Policy
+            <a
+              href="/privacy.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-mono font-bold tracking-widest uppercase text-[#11252C]/80 hover:text-[#47A659] transition-colors"
+            >
+              PRIVACY POLICY
             </a>
-            <a href="#terms" className="text-xs font-mono font-bold tracking-widest uppercase text-[#11252C]/80 hover:text-[#47A659] transition-colors">
-              Terms of Service
+            <a
+              href="/terms.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-mono font-bold tracking-widest uppercase text-[#11252C]/80 hover:text-[#47A659] transition-colors"
+            >
+              TERMS OF SERVICE
             </a>
-            <a href="#support" className="text-xs font-mono font-bold tracking-widest uppercase text-[#11252C]/80 hover:text-[#47A659] transition-colors">
-              Support
+            <a
+              href="mailto:support@cosmocode.studio?subject=Ozzy%20App%20Support"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsSupportOpen(true);
+              }}
+              className="text-xs font-mono font-bold tracking-widest uppercase text-[#11252C]/80 hover:text-[#47A659] transition-colors cursor-pointer"
+            >
+              SUPPORT
             </a>
           </div>
 
@@ -703,6 +704,8 @@ export default function App() {
           </div>
         )}
       </AnimatePresence>
+
+      <SupportModal isOpen={isSupportOpen} onClose={() => setIsSupportOpen(false)} />
 
     </div>
   );

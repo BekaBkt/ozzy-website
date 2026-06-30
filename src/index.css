@@ -1,13 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Montserrat:wght@300;400;500;600;700&family=Caveat:wght@700&display=swap');
 @import "tailwindcss";
 
-@theme {
-  --font-sans: "Outfit", "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Outfit", sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-  
-  --color-brand-primary: #47A659; /* Green Accent */
-  --color-brand-dark: #11252C; /* Very dark slate / black */
-  --color-light-bg: #FFFFFF; /* Pure white background */
+@font-face {
+    font-family: 'Jellee';
+    src: url('./assets/fonts/Jellee.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 
+@theme {
+    --font-sans: "Jellee", "Outfit", "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-display: "Jellee", "Outfit", sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+    --font-montserrat: "Montserrat", sans-serif;
+    --font-handwritten: "Caveat", cursive;
+
+    --color-brand-primary: #47A659;
+    /* Green Accent */
+    --color-brand-dark: #11252C;
+    /* Very dark slate / black */
+    --color-light-bg: #FFFFFF;
+    /* Pure white background */
+}
+
+body {
+    font-family: 'Jellee', sans-serif;
+}

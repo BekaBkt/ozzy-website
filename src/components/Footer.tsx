@@ -1,5 +1,6 @@
 import { Shield, Sparkles, Flame, HelpCircle, Heart, Send } from 'lucide-react';
 import React, { useState } from 'react';
+import SupportModal from './SupportModal';
 
 interface FooterProps {
   onCtaClick: () => void;
@@ -8,6 +9,7 @@ interface FooterProps {
 export default function Footer({ onCtaClick }: FooterProps) {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+  const [isSupportOpen, setIsSupportOpen] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -102,10 +104,10 @@ export default function Footer({ onCtaClick }: FooterProps) {
             </h5>
             <ul className="space-y-3 text-xs font-mono font-bold uppercase tracking-wider">
               <li>
-                <a href="#privacy" className="hover:text-brand-primary transition-all">Privacy Policy</a>
+                <a href="/privacy.html" target="_blank" rel="noopener noreferrer" className="hover:text-brand-primary transition-all">Privacy Policy</a>
               </li>
               <li>
-                <a href="#terms" className="hover:text-brand-primary transition-all">Terms of Service</a>
+                <a href="/terms.html" target="_blank" rel="noopener noreferrer" className="hover:text-brand-primary transition-all">Terms of Service</a>
               </li>
               <li>
                 <a href="#dpa" className="hover:text-brand-primary transition-all">Data Processing Agreement</a>
@@ -123,7 +125,16 @@ export default function Footer({ onCtaClick }: FooterProps) {
             </h5>
             <ul className="space-y-3 text-xs font-mono font-bold uppercase tracking-wider">
               <li>
-                <a href="#sub" className="hover:text-brand-primary transition-all">Submit a Ticket</a>
+                <a 
+                  href="#sub" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsSupportOpen(true);
+                  }}
+                  className="hover:text-brand-primary transition-all cursor-pointer"
+                >
+                  Submit a Ticket
+                </a>
               </li>
               <li>
                 <a href="#discord" className="hover:text-brand-primary transition-all">Community Portal</a>
@@ -171,6 +182,7 @@ export default function Footer({ onCtaClick }: FooterProps) {
         </div>
 
       </div>
+      <SupportModal isOpen={isSupportOpen} onClose={() => setIsSupportOpen(false)} />
     </footer>
   );
 }
