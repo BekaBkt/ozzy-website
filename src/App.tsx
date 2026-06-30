@@ -11,10 +11,10 @@ import {
   ShieldCheck
 } from 'lucide-react';
 import OzzyHeroAnimation from './components/OzzyHeroAnimation';
-import imgStage1 from './components/img/SS4.png';
+import imgStage1 from './components/img/SS1 .png';
 import imgStage2 from './components/img/SS3.png';
-import imgStage3 from './components/img/image.png';
-import imgStage4 from './components/img/SS5.png';
+import imgStage3 from './components/img/0 copy.png';
+import imgStage4 from './components/img/SS4.png';
 import ozzyIcon from './components/img/ozzy-icon.png';
 import SupportModal from './components/SupportModal';
 
@@ -460,7 +460,8 @@ export default function App() {
               </div>
             </div>
 
-            {/* HIDDEN - Feature Row 3 (Text Left, Image Right) - restore when needed
+
+            {/* Feature Row 3 (Text Left, Image Right) */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
               <div className="md:col-span-6 space-y-4 flex flex-col items-start text-left">
                 <span className="text-xs font-mono font-bold text-[#47A659] tracking-wider uppercase bg-[#47A659]/10 px-2.5 py-1 rounded-full">
@@ -484,7 +485,6 @@ export default function App() {
                 </div>
               </div>
             </div>
-            */}
 
             {/* Feature Row 4 (Image Left, Text Right) */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
@@ -518,6 +518,7 @@ export default function App() {
             </div>
 
           </div>
+
 
 
 
