@@ -11,9 +11,9 @@ import {
   ShieldCheck
 } from 'lucide-react';
 import OzzyHeroAnimation from './components/OzzyHeroAnimation';
-import imgStage1 from './components/img/SS1 .png';
+import imgStage1 from './components/img/SS1.png';
 import imgStage2 from './components/img/SS3.png';
-import imgStage3 from './components/img/0 copy.png';
+import imgStage3 from './components/img/streak0.png';
 import imgStage4 from './components/img/SS4.png';
 import ozzyIcon from './components/img/ozzy-icon.png';
 import SupportModal from './components/SupportModal';
