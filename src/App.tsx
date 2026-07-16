@@ -18,6 +18,12 @@ import imgStage4 from './components/img/SS4.png';
 import ozzyIcon from './components/img/ozzy-icon.png';
 import SupportModal from './components/SupportModal';
 
+// ─── Store URLs ───────────────────────────────────────────────────────────────
+// Set VITE_APP_STORE_URL / VITE_GOOGLE_PLAY_URL in your .env file.
+// When a URL is present the button becomes active; when empty "Coming Soon" shows.
+const APP_STORE_URL  = import.meta.env.VITE_APP_STORE_URL  || '';
+const GOOGLE_PLAY_URL = import.meta.env.VITE_GOOGLE_PLAY_URL || '';
+
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState<'appstore' | 'googleplay' | 'general'>('general');
@@ -145,47 +151,102 @@ export default function App() {
 
           {/* CTA Right */}
           <div className="flex items-center gap-3">
-            <div
-              id="btn-nav-app-store"
-              className="opacity-40 select-none pointer-events-none flex shrink-0"
-              aria-label="Download on the App Store"
-            >
-              <img
-                src="/app-store-badge.svg"
-                alt="Download on the App Store"
-                className="h-10 w-auto"
-              />
-            </div>
 
-            <div className="relative flex shrink-0">
-              <div
-                id="btn-nav-google-play"
-                className="opacity-40 select-none pointer-events-none"
-                aria-label="Get it on Google Play"
+            {/* ── Mobile ─────────────────────────────────────────────────── */}
+            {APP_STORE_URL ? (
+              // iOS URL is set → show active App Store badge
+              <a
+                id="btn-mobile-app-store"
+                href={APP_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex sm:hidden shrink-0"
+                aria-label="Download on the App Store"
               >
-                <img 
-                  src="/google-play-badge.svg" 
-                  alt="Get it on Google Play" 
-                  className="h-10 w-auto" 
-                />
-              </div>
-              <div className="absolute top-[8px] left-[142px] flex items-center pointer-events-none select-none z-50">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#47A659" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="mr-1 transform translate-y-0.5">
-                    <path d="M20 11.5c-3 0.3-11-0.2-16 0.5" />
-                    <path d="M9 6.5l-5 5 5 4.5" />
-                  </svg>
-                <span className="font-handwritten text-base font-bold text-[#47A659] -rotate-6 select-none translate-y-0.5 whitespace-nowrap">
-                  coming soon!
+                <img src="/app-store-badge.svg" alt="Download on the App Store" className="h-9 w-auto" />
+              </a>
+            ) : (
+              // No URL yet → show coming soon pill
+              <div className="flex sm:hidden items-center gap-2 px-3 py-1.5 bg-[#47A659]/10 border border-[#47A659]/25 rounded-full">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#47A659] animate-pulse block shrink-0" />
+                <span className="text-[11px] font-mono font-black text-[#47A659] uppercase tracking-widest whitespace-nowrap">
+                  Coming Soon
                 </span>
               </div>
+            )}
+
+            {/* ── Desktop ─────────────────────────────────────────────────── */}
+            <div className="hidden sm:flex items-center gap-3">
+
+              {/* App Store badge */}
+              {APP_STORE_URL ? (
+                <a
+                  id="btn-nav-app-store"
+                  href={APP_STORE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex shrink-0 transition-opacity hover:opacity-80"
+                  aria-label="Download on the App Store"
+                >
+                  <img src="/app-store-badge.svg" alt="Download on the App Store" className="h-10 w-auto" />
+                </a>
+              ) : (
+                <div
+                  id="btn-nav-app-store"
+                  className="opacity-40 select-none pointer-events-none flex shrink-0"
+                  aria-label="Download on the App Store"
+                >
+                  <img src="/app-store-badge.svg" alt="Download on the App Store" className="h-10 w-auto" />
+                </div>
+              )}
+
+              {/* Google Play badge + coming-soon annotation */}
+              <div className="relative flex shrink-0">
+                {GOOGLE_PLAY_URL ? (
+                  <a
+                    id="btn-nav-google-play"
+                    href={GOOGLE_PLAY_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex transition-opacity hover:opacity-80"
+                    aria-label="Get it on Google Play"
+                  >
+                    <img src="/google-play-badge.svg" alt="Get it on Google Play" className="h-10 w-auto" />
+                  </a>
+                ) : (
+                  <>
+                    <div
+                      id="btn-nav-google-play"
+                      className="opacity-40 select-none pointer-events-none"
+                      aria-label="Get it on Google Play"
+                    >
+                      <img src="/google-play-badge.svg" alt="Get it on Google Play" className="h-10 w-auto" />
+                    </div>
+                    {/* Handwritten "coming soon!" annotation — only shown when no URL */}
+                    {!APP_STORE_URL && (
+                      <div className="absolute top-[8px] left-[142px] flex items-center pointer-events-none select-none z-50">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#47A659" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="mr-1 transform translate-y-0.5">
+                          <path d="M20 11.5c-3 0.3-11-0.2-16 0.5" />
+                          <path d="M9 6.5l-5 5 5 4.5" />
+                        </svg>
+                        <span className="font-handwritten text-base font-bold text-[#47A659] -rotate-6 select-none translate-y-0.5 whitespace-nowrap">
+                          coming soon!
+                        </span>
+                      </div>
+                    )}
+                  </>
+                )}
+              </div>
+
             </div>
+
           </div>
         </div>
       </nav>
 
       {/* 2. Hero Section - Centered Layout as per bitepal.app specification (Swapped order: Rive container first, text below) */}
-      <header id="hero-section" className="w-full bg-white pt-16 pb-20 border-b border-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center gap-8">
+      <header id="hero-section" className="w-full bg-white pt-8 sm:pt-16 pb-12 sm:pb-20 border-b border-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center gap-5 sm:gap-8">
 
           {/* Top micro-badge tag */}
           {/* <div className="inline-flex items-center gap-2 px-3 tracking-widest py-1 bg-[#47A659]/10 rounded-full text-[10px] font-mono font-bold text-[#47A659] uppercase">
@@ -194,10 +255,10 @@ export default function App() {
           </div> */}
 
           {/* Rive Placeholder Container - Perfect Centered Aspect Ratio 1024x576 - Swept to Top of Hero */}
-          <div className="w-full max-w-[1024px] mt-2 px-1">
+          <div className="w-full max-w-[1024px] mt-0 sm:mt-2 px-0 sm:px-1">
             <div
               id="rive-interactive-container"
-              className="relative w-full aspect-[1024/576] bg-white rounded-[2rem] overflow-hidden shadow-xl flex flex-col items-center justify-center transition-all group"
+              className="relative w-full aspect-[4/3] sm:aspect-[1024/576] bg-white rounded-[1.25rem] sm:rounded-[2rem] overflow-hidden shadow-xl flex flex-col items-center justify-center transition-all group"
             >
 
               {!simActive ? (
@@ -356,18 +417,18 @@ export default function App() {
           </div>
 
           {/* Headlines centered - Swept below Rive Container */}
-          <div className="space-y-4 max-w-3xl mt-8">
-            <h1 className="font-display font-black text-4xl sm:text-5xl md:text-6xl tracking-wide text-[#11252C] leading-none uppercase">
-              Quiet the noise <br /> <span className="text-[#47A659] tracking-[4px]">Find your focus</span>
+          <div className="space-y-3 max-w-3xl mt-4 sm:mt-8 px-2">
+            <h1 className="font-display font-black text-3xl sm:text-5xl md:text-6xl tracking-wide text-[#11252C] leading-tight sm:leading-none uppercase">
+              Quiet the noise <br /> <span className="text-[#47A659] tracking-[2px] sm:tracking-[4px]">Find your focus</span>
             </h1>
 
-            <h2 className="font-display font-black text-xl sm:text-2xl text-[#11252C]/90 tracking-tight uppercase">
+            <h2 className="font-display font-black text-lg sm:text-2xl text-[#11252C]/90 tracking-tight uppercase">
               Focus is your <span className="text-[#47A659] underline decoration-wavy decoration-2 underline-offset-4">Superpower.</span>
             </h2>
           </div>
 
           {/* Subheadline centered */}
-          <p className="text-base sm:text-lg text-[#11252C]/80 font-normal leading-relaxed max-w-xl mx-auto font-montserrat">
+          <p className="text-sm sm:text-lg text-[#11252C]/80 font-normal leading-relaxed max-w-xl mx-auto font-montserrat px-2">
             Turn your daily goals into an RPG. Grow your digital companion, unlock rare traits, and reclaim your attention span with Ozzy.
           </p>
 
