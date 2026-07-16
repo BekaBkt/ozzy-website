@@ -8,7 +8,6 @@ import {
   Timer,
   Flame,
   ChevronRight,
-  ShieldCheck
 } from 'lucide-react';
 import OzzyHeroAnimation from './components/OzzyHeroAnimation';
 import imgStage1 from './components/img/SS1.png';
@@ -432,11 +431,7 @@ export default function App() {
             Turn your daily goals into an RPG. Grow your digital companion, unlock rare traits, and reclaim your attention span with Ozzy.
           </p>
 
-          {/* Trust badge */}
-          <div className="flex items-center gap-2 text-[10px] text-[#11252C]/50 font-mono tracking-wide uppercase">
-            <ShieldCheck className="w-4 h-4 text-[#47A659]" />
-            <span>SECURITY VERIFIED • ZERO TRACKERS</span>
-          </div>
+
 
         </div>
       </header>
@@ -446,10 +441,10 @@ export default function App() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <div className="text-center max-w-2xl mx-auto mb-16 md:mb-24 space-y-3">
-            <span className="text-xs font-display font-bold text-[#47A659] tracking-widest uppercase">
+            <span className="text-xs font-montserrat font-bold text-[#47A659] tracking-widest uppercase">
               How Ozzy Works
             </span>
-            <h3 className="font-display font-black text-3xl sm:text-4xl text-[#11252C] uppercase tracking-tight">
+            <h3 className="font-montserrat font-black text-3xl sm:text-4xl text-[#11252C] uppercase tracking-tight">
               An RPG game powered by your focus sessions
             </h3>
             <p className="text-sm sm:text-base text-[#11252C]/75 leading-relaxed font-montserrat">

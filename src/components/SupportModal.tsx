@@ -36,7 +36,7 @@ export default function SupportModal({ isOpen, onClose }: { isOpen: boolean, onC
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 font-montserrat">
       <div className="bg-white rounded-3xl p-8 w-full max-w-md shadow-2xl relative">
         <button
           onClick={onClose}
@@ -45,7 +45,7 @@ export default function SupportModal({ isOpen, onClose }: { isOpen: boolean, onC
           ✕
         </button>
 
-        <h2 className="text-2xl font-black text-[#11252C] mb-2 uppercase tracking-wide">Contact Support</h2>
+        <h2 className="text-2xl font-black text-[#11252C] mb-2 uppercase tracking-wide font-montserrat">Contact Support</h2>
         <p className="text-gray-500 text-sm mb-6">Found a bug? Have a suggestion? Let us know!</p>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
