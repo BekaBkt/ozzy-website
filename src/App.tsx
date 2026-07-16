@@ -444,7 +444,7 @@ export default function App() {
             <span className="text-xs font-montserrat font-bold text-[#47A659] tracking-widest uppercase">
               How Ozzy Works
             </span>
-            <h3 className="font-montserrat font-black text-3xl sm:text-4xl text-[#11252C] uppercase tracking-tight">
+            <h3 className="font-display font-black text-3xl sm:text-4xl text-[#11252C] uppercase tracking-tight">
               An RPG game powered by your focus sessions
             </h3>
             <p className="text-sm sm:text-base text-[#11252C]/75 leading-relaxed font-montserrat">

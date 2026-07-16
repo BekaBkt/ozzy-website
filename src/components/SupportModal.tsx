@@ -45,7 +45,7 @@ export default function SupportModal({ isOpen, onClose }: { isOpen: boolean, onC
           ✕
         </button>
 
-        <h2 className="text-2xl font-black text-[#11252C] mb-2 uppercase tracking-wide font-montserrat">Contact Support</h2>
+        <h2 className="text-2xl font-black text-[#11252C] mb-2 uppercase tracking-wide font-display">Contact Support</h2>
         <p className="text-gray-500 text-sm mb-6">Found a bug? Have a suggestion? Let us know!</p>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
