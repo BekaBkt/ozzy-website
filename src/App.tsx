@@ -18,10 +18,9 @@ import ozzyIcon from './components/img/ozzy-icon.png';
 import SupportModal from './components/SupportModal';
 
 // ─── Store URLs ───────────────────────────────────────────────────────────────
-// Set VITE_APP_STORE_URL / VITE_GOOGLE_PLAY_URL in your .env file.
 // When a URL is present the button becomes active; when empty "Coming Soon" shows.
-const APP_STORE_URL  = import.meta.env.VITE_APP_STORE_URL  || '';
-const GOOGLE_PLAY_URL = import.meta.env.VITE_GOOGLE_PLAY_URL || '';
+const APP_STORE_URL  = 'https://apps.apple.com/us/app/ozzy-adhd-focus-pal/id6760987195';
+const GOOGLE_PLAY_URL = '';
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
